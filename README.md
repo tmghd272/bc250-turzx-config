@@ -9,7 +9,7 @@ Currently designed for Arch/CachyOS-based systems only.
 Clone the repository to the following path:
 
 ```
-git clone https://github.com/tmghd272/bc250-turzx-config.git ~/Apps/bc250-turzx-config
+[ -d ~/Apps/bc250-turzx-config ] && cd ~/Apps/bc250-turzx-config && git pull || git clone https://github.com/tmghd272/bc250-turzx-config.git ~/Apps/bc250-turzx-config
 ```
 
 Start the toolkit:

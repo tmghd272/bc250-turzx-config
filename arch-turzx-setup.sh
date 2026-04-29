@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 set -e
 
-echo "== Turing Smart Screen Setup (CachyOS/Arch) =="
+COLOR="\e[36m"
+RESET="\e[0m"
+
+echo -e "${COLOR}== Turing Smart Screen Setup (CachyOS/Arch) ==${RESET}"
 
 # ----------------------------
-# 1. Dependencies
+# 1. Prerequisites
 # ----------------------------
-echo "[1/7] Installing dependencies..."
+echo -e "${COLOR}[1/7] Installing prerequisites...${RESET}"
 
 sudo pacman -Sy --needed --noconfirm \
     git python python-pip python-virtualenv \
@@ -15,13 +18,13 @@ sudo pacman -Sy --needed --noconfirm \
 # ----------------------------
 # 2. USB check
 # ----------------------------
-echo "[2/7] Checking USB device..."
+echo -e "${COLOR}[2/7] Checking USB device...${RESET}"
 lsusb | grep -i qinheng || echo "⚠️ Device not detected yet (plug it in)"
 
 # ----------------------------
 # 3. Udev rules
 # ----------------------------
-echo "[3/7] Setting udev rule..."
+echo -e "${COLOR}[3/7] Setting udev rule...${RESET}"
 
 RULE_FILE="/etc/udev/rules.d/99-usbmonitor.rules"
 
@@ -32,12 +35,12 @@ fi
 sudo udevadm control --reload-rules
 sudo udevadm trigger
 
-echo "Replug your USB screen now."
+echo -e "${COLOR}Replug your USB screen now.${RESET}"
 
 # ----------------------------
 # 4. Clone main repo
 # ----------------------------
-echo "[4/7] Cloning main repo..."
+echo -e "${COLOR}[4/7] Cloning main repo...${RESET}"
 
 mkdir -p "$HOME/Apps"
 cd "$HOME/Apps"
@@ -51,22 +54,22 @@ fi
 cd turing-smart-screen-python
 
 # ----------------------------
-# 4.5 Apply BC-250 overlay (YOUR REPO)
+# 4.5 Apply BC-250 overlay (TMGHD272's overlay)
 # ----------------------------
-echo "[4.5/7] Applying BC-250 config overlay..."
+echo -e "${COLOR}[4.5/7] Applying BC-250 config overlay...${RESET}"
 
 if [ ! -d "$HOME/Apps/bc250-turzx-config" ]; then
     git clone https://github.com/tmghd272/bc250-turzx-config.git "$HOME/Apps/bc250-turzx-config"
 fi
 
-echo "Copying overlay files..."
+echo -e "${COLOR}Copying overlay files...${RESET}"
 
-cp -rf "$HOME/Apps/bc250-turzx-config/"* .
+cp -rf "$HOME/Apps/bc250-turzx-config/turzx-config/"* .
 
 # ----------------------------
 # 5. Python venv (Fish-safe)
 # ----------------------------
-echo "[5/7] Creating virtual environment..."
+echo -e "${COLOR}[5/7] Creating virtual environment...${RESET}"
 
 python -m venv .venv
 
@@ -75,7 +78,7 @@ bash -c "source .venv/bin/activate && pip install -U pip && pip install -r requi
 # ----------------------------
 # 6. Systemd service
 # ----------------------------
-echo "[6/7] Creating systemd user service..."
+echo -e "${COLOR}[6/7] Creating systemd user service...${RESET}"
 
 mkdir -p "$HOME/.config/systemd/user"
 
@@ -101,12 +104,12 @@ systemctl --user enable turing.service
 # ----------------------------
 # 7. Done
 # ----------------------------
-echo "[7/7] Done!"
+echo -e "${COLOR}[7/7] Done!${RESET}"
 
 echo ""
-echo "Manual test:"
-echo "cd ~/Apps/turing-smart-screen-python"
-echo "bash -c 'source .venv/bin/activate && python startup.py'"
+echo -e "${COLOR}Manual test:${RESET}"
+echo -e "${COLOR}cd ~/Apps/turing-smart-screen-python${RESET}"
+echo -e "${COLOR}bash -c 'source .venv/bin/activate && python startup.py'${RESET}"
 echo ""
-echo "Start service:"
-echo "systemctl --user start turing.service"
+echo -e "${COLOR}Start service:${RESET}"
+echo -e "${COLOR}systemctl --user start turing.service${RESET}"

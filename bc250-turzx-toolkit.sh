@@ -113,7 +113,7 @@ echo -e "${PURPLE}2) Restart turing service${RESET}"
 echo -e "${GREEN}3) Start turing service${RESET}"
 echo -e "${RED}4) Stop turing service${RESET}"
 echo -e "${GREEN}5) Update startup.py (from release)${RESET}"
-echo -e "${GREEN}6) Replace turzx background image (.png)${RESET}"
+echo -e "${GREEN}6) Replace Turzx background image (.png)${RESET}"
 echo -e "${YELLOW}7) View Turing service logs (journalctl)${RESET}"
 echo -e "${WHITE}8) Misc tools (NCT sensors)${RESET}"
 echo -e "${CYAN}0) Exit${RESET}"
@@ -156,13 +156,13 @@ case $opt in
 
 6)
   echo -e "${CYAN}[*] Replace background image${RESET}"
-  read -p "Enter full path to your image: " IMG_PATH
+  read -p "Drag & drop or enter full path to your image: " IMG_PATH
 
   if [ ! -f "$IMG_PATH" ]; then
     echo -e "${CYAN}❌ File not found${RESET}"
   else
     cp "$IMG_PATH" "$BG_DIR/example_320x480.png"
-    echo -e "${CYAN}✅ Background replaced${RESET}"
+    echo -e "${CYAN}✅ Background replaced. Restart Turing to apply changes.${RESET}"
   fi
   ;;
 

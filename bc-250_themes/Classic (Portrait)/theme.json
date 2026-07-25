@@ -4,7 +4,7 @@
     "height": 480,
     "name": "Classic (Portrait)",
     "font_path": "res/fonts/jetbrains-mono/JetBrainsMono-ExtraBold.ttf",
-    "background_path": "res/themes/Classic (Portrait)/example_320x480.png"
+    "background_path": "res/backgrounds/example_320x480.png"
   },
   "elements": [
     {
@@ -89,7 +89,7 @@
       "color": "#dcdcff",
       "fontFamily": "'JetBrains Mono', monospace",
       "enabled": true,
-      "text": "{gpu_temp_pad} °C"
+      "text": "{gpu_temp_pad} \u00b0C"
     },
     {
       "id": "cpu_label",
@@ -137,7 +137,7 @@
       "color": "#dcdcff",
       "fontFamily": "'JetBrains Mono', monospace",
       "enabled": true,
-      "text": "{cpu_temp_pad} °C"
+      "text": "{cpu_temp_pad} \u00b0C"
     },
     {
       "id": "title_gddr6",
@@ -305,7 +305,7 @@
       "color": "#dcdcff",
       "fontFamily": "'JetBrains Mono', monospace",
       "enabled": true,
-      "text": "{nvme_temp_pad} °C"
+      "text": "{nvme_temp_pad} \u00b0C"
     },
     {
       "id": "diskread_label",
@@ -329,7 +329,7 @@
       "color": "#dcdcff",
       "fontFamily": "'JetBrains Mono', monospace",
       "enabled": true,
-      "text": "{disk_read_pad} MB/s↓"
+      "text": "{disk_read_pad} MB/s\u2193"
     },
     {
       "id": "diskwrite_label",
@@ -353,7 +353,7 @@
       "color": "#dcdcff",
       "fontFamily": "'JetBrains Mono', monospace",
       "enabled": true,
-      "text": "{disk_write_pad} MB/s↑"
+      "text": "{disk_write_pad} MB/s\u2191"
     },
     {
       "id": "net_label",
@@ -377,7 +377,7 @@
       "color": "#dcdcff",
       "fontFamily": "'JetBrains Mono', monospace",
       "enabled": true,
-      "text": "{net_rx_pad}↓"
+      "text": "{net_rx_pad}\u2193"
     },
     {
       "id": "net_tx_val",
@@ -389,7 +389,7 @@
       "color": "#dcdcff",
       "fontFamily": "'JetBrains Mono', monospace",
       "enabled": true,
-      "text": "{net_tx_pad}↑"
+      "text": "{net_tx_pad}\u2191"
     }
   ]
 }
